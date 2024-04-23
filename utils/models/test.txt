@@ -1,0 +1,52 @@
+1. Get all employees from the Marketing department with a salary greater than 60000, ordered by salary descending
+db.employees.find({"department" : "Marketing" , "salary" : {$gt : 60000}}).sort({ "salary": -1 });
+
+SELECT * 
+FROM employees 
+WHERE department = 'Marketing' AND salary > 60000 
+ORDER BY salary DESC;
+
+2. Get the average salary for each department
+ db.employees.aggregate([ { $group: { _id: "$department", average_salary: { $avg: "$salary" } } } ]);
+
+SELECT department, AVG(salary) AS average_salary 
+FROM employees 
+GROUP BY department;
+
+3. Get the top 3 highest-paid employees overall
+db.employees.find().sort({"salary" : -1}).limit(3)
+
+SELECT * 
+FROM employees 
+ORDER BY salary DESC 
+LIMIT 3;
+
+4. Get the count of employees in each department
+ db.employees.aggregate([ { $group: { _id: "$department", employee_count: { $sum: 1 } } } ]);
+
+SELECT department, COUNT(*) AS employee_count 
+FROM employees 
+GROUP BY department;
+
+5. Get the name of the employee with the highest salary
+db.employees.find().sort({ "salary": -1 }).limit(1);
+
+SELECT name 
+FROM employees 
+ORDER BY salary DESC 
+LIMIT 1;
+
+6. Get the total salary expenditure for each department
+db.employees.aggregate([ { $group: { _id: "$department", total_salary_expenditure: { $sum: "$salary" } } } ]);
+
+7. Get the list of employees who have a salary greater than the average salary of their department
+
+8. Get the department(s) with the highest total salary expenditure
+
+9. Get the employee(s) with the second-highest salary
+
+10. Get the employees' names and salaries, sorted by department (ascending) and salary (descending)
+
+11. Get the employee(s) with the second-highest salary without use limit
+
+12. Get the employee(s) with the highest salary department wise
