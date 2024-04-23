@@ -1,3 +1,4 @@
+
 // src/app/store.ts
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import productReducer from './slice/productSlice';

@@ -4,8 +4,8 @@ import type { Metadata } from "next";
 import { Mulish } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Provider } from "react-redux";
-import { store } from "@/redux/store";
+// import { Provider } from "react-redux";
+// import { store } from "@/redux/store";
 
 const mulish = Mulish({ subsets: ["latin"] });
 
@@ -27,11 +27,11 @@ export default function RootLayout({
         className={mulish.className}
       >
         <AuthProvider>
-          <Provider store={store}>
+          {/* <Provider store={store}> */}
             <Navbar />
             {children}
             <Footer />
-          </Provider>
+          {/* </Provider> */}
         </AuthProvider>
       </body>
     </html>
